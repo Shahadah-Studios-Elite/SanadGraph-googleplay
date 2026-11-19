@@ -20,9 +20,11 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: Build Debug APK & Release AAB
-        run: gradle assembleDebug bundleRelease
+        run: gradle assembleDebug bundleRelease --no-daemon
 
       - name: Upload APK & Google Play AAB
         uses: actions/upload-artifact@v4
